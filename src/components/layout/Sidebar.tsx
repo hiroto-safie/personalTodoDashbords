@@ -9,11 +9,11 @@ interface PageRouteComponentProps {
 
 const PageRouteComponent: React.FC<PageRouteComponentProps> = ({ pageTitle, pageLink }) => {
     return (
-        <Box sx={{width: "100%", height: "8vh", "&hover": {
+        <Box sx={{width: "100%","&hover": {
             backgroundColor: "gray"
         }}}>
             <Link href={pageLink}>
-                <Typography>{pageTitle}</Typography>
+                <Typography variant="h5" align='center' sx={{margin: 2}}>{pageTitle}</Typography>
             </Link>
         </Box>
     );
@@ -22,7 +22,7 @@ const PageRouteComponent: React.FC<PageRouteComponentProps> = ({ pageTitle, page
 export const Sidebar: React.FC = () => {
     return (
         <Stack direction="row">
-            <Stack sx={{width: "20vw", height: `calc(100vh - ${HEADER_HEIGHT}vh)`, backgroundColor: "blue", marginRight: 3}}>
+            <Stack sx={{width: "15vw", height: `calc(100vh - ${HEADER_HEIGHT}vh)`, backgroundColor: "blue", marginRight: 3}}>
                 <PageRouteComponent pageTitle="Dashboard" pageLink="/" />
                 <PageRouteComponent pageTitle="Task List" pageLink="/taskList" />
                 <PageRouteComponent pageTitle="Task Analysis" pageLink="/taskAnalysis" />

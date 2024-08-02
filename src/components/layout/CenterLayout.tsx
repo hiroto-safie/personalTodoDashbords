@@ -10,7 +10,6 @@ export const CenterLayout: React.FC<CenterLayoutProps> = ({ children, maxWidth }
         <Container maxWidth={maxWidth}>
             <Stack 
                 direction="column"
-                justifyContent="center"
                 alignItems="center"
                 flexWrap="nowrap"
                 gap={8}

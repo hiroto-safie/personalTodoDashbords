@@ -1,10 +1,17 @@
+import { Paper, Typography } from '@mui/material';
 import React from 'react';
 
 const DashboardPage: React.FC = () => {
     return (
-        <div>
-            <h1>Dash Board</h1>
-        </div>
+        <>
+            <Typography variant="h2">Dashboard</Typography>
+            <Typography variant="h4">直近タスク</Typography>
+            <Paper sx={{minWidth: "50vw"}}>
+                <Typography>タスク1</Typography>
+                <Typography>タスク2</Typography>
+                <Typography>タスク3</Typography>
+            </Paper>
+        </>
     );
 };
 
