@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import { Header } from "./Header"
 import { Sidebar } from "./Sidebar"
 import { Stack } from "@mui/material"
+import { CenterLayout } from "./CenterLayout"
 
 const Layout = () => {
     return(
@@ -9,7 +10,9 @@ const Layout = () => {
             <Header />
             <Stack direction="row">
                 <Sidebar />
-                <Outlet />
+                <CenterLayout>
+                    <Outlet />
+                </CenterLayout>
             </Stack>
         </>
     )
