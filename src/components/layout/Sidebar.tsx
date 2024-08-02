@@ -1,4 +1,4 @@
-import { Box, cardClasses, Link, Stack, Typography } from '@mui/material';
+import { Box, Link, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { HEADER_HEIGHT } from './Header';
 
