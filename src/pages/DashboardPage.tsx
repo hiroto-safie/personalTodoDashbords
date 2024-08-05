@@ -5,7 +5,7 @@ const DashboardPage: React.FC = () => {
     return (
         <>
             <Typography variant="h2">Dashboard</Typography>
-            <Typography variant="h4">直近タスク</Typography>
+            <Typography variant="h4">Upcoming Tasks</Typography>
             <Paper sx={{minWidth: "50vw"}}>
                 <Typography>タスク1</Typography>
                 <Typography>タスク2</Typography>
