@@ -3,12 +3,15 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { DateInput, FormInput, SelectInput } from './Inputs';
-import { useForm } from 'react-hook-form';
+import { FieldValue, useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { SubmitButton } from './Button';
+import { TaskContext } from '../../providers/TaskContextProvider';
+import { useContext } from 'react';
+import { Task } from '../../types/task';
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -27,9 +30,13 @@ interface TaskAddModalProps{
 export const TaskAddModal:React.FC<TaskAddModalProps> = ({open, setOpen}) => {
   const handleClose = () => setOpen(false);
   const { register, handleSubmit } = useForm()
+  const {dispatch} = useContext(TaskContext)
 
-  const onSubmit = () => {
+  const onSubmit = (inputValue: FieldValue<Task>) => {
     console.log("Task Added")
+    console.log(inputValue);
+    
+    dispatch({type: "ADD_TASK", payload: inputValue})
     handleClose()
   }
 
