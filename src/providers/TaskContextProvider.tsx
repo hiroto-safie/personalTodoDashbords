@@ -1,14 +1,22 @@
-import React, { createContext, ReactNode, useReducer } from "react"
+import React, { createContext, ReactNode, useEffect, useReducer } from "react"
+import { State } from "../types/state";
+import { Action } from "../types/action";
+import { fetchTasks } from "../services/task";
 
 const initialState = {
     tasks: [],
     nextId: 1
 };
 
-export const TaskContext = createContext<{ state: any, dispatch: any }>({state: "", dispatch: () => null})
+export const TaskContext = createContext<{ state: State, dispatch: React.Dispatch<Action> }>({state: initialState, dispatch: () => null})
 
-function taskReducer(state, action) {
+function taskReducer(state: State, action: Action) {
     switch (action.type) {
+        case "SET_TASKS":
+            return {
+                ...state,
+                tasks: action.payload
+            }
         case "ADD_TASK":
             return {
                 ...state,
@@ -34,6 +42,11 @@ function taskReducer(state, action) {
 
 export const TaskContextProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const [state, dispatch] = useReducer(taskReducer, initialState)
+
+    useEffect(() => {
+        const tasks = fetchTasks()
+        dispatch({type: "SET_TASKS", payload: tasks})
+    }, [])
 
     return(
         <TaskContext.Provider value={{state, dispatch}}>
