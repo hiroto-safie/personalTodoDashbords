@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Button, SxProps } from '@mui/material';
 
 interface ButtonProps {
@@ -13,9 +13,11 @@ const buttonBaseStyle: SxProps = {
 }
 
 export const SubmitButton: React.FC<ButtonProps> = ({ name, variant, onClick, sx }) => {
-    return (
+    // NOTE: sxかvariantに変更があれば、SubmitButtonの見た目が変わる可能性がある。
+    // つまり、再計算(再レンダリング)が必要になる可能性がある
+    return useMemo(() => (
         <Button variant={variant} onClick={onClick} sx={{...buttonBaseStyle, ...sx}}>
             {name}
         </Button>
-    );
+    ), [sx, variant]);
 };
