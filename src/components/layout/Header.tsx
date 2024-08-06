@@ -6,7 +6,7 @@ export const HEADER_HEIGHT = 10;
 export const Header: React.FC = () => {
     return (
         <Box sx={{width: "100vw", height: `${HEADER_HEIGHT}vh`, backgroundColor: "green"}}>
-            <Typography variant='h2'>Task Management Dashboard</Typography>
+            <Typography variant='h3'>Task Management Dashboard</Typography>
         </Box>
     );
 };

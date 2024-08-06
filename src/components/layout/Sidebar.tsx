@@ -1,7 +1,7 @@
 import { Box, Link, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { HEADER_HEIGHT } from './Header';
-import { TaskAddModal } from '../common/TaskAddModal';
+import { TaskAddModal } from '../common/Modals';
 
 interface PageRouteComponentProps {
   pageTitle: string;
