@@ -7,7 +7,7 @@ import { FieldValue, useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { SubmitButton } from './Buttons';
 import { TaskContext } from '../../providers/TaskContextProvider';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { Task } from '../../types/task';
 
 const style = {
@@ -42,21 +42,21 @@ export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
 
   return (
     <Modal
-    open={open}
-    onClose={handleClose}
+      open={open}
+      onClose={handleClose}
     >
         <Box component="form" sx={style}>
             <Typography variant="h3">
                 Task Addition
             </Typography>
-            <FormInput register={register} fieldName="Task Name" required sx={{width: "100%"}}/>
+            <FormInput register={register} title="Task Name" fieldName="name" required sx={{width: "100%"}}/>
             <Stack direction="row" justifyContent="space-between">
-                <SelectInput register={register} fieldName="Task priority" required />
-                <DateInput register={register} fieldName="Due date" required sx={{width: "100%"}}/>
+                <SelectInput register={register} title="Task priority" fieldName="priority" required />
+                <DateInput register={register} title="Due Date" fieldName="dueDate" required sx={{width: "100%"}}/>
             </Stack>
-            <FormInput register={register} fieldName="Description" required sx={{width: "100%"}}/>
+            <FormInput register={register} title="Description" fieldName="description" required sx={{width: "100%"}}/>
             <Stack justifyContent="center" alignItems="center">
-                <SubmitButton name="Register" variant="contained" onClick={() => handleSubmit(onSubmit)} sx={{width: "30%"}}/>
+                <SubmitButton name="Register" variant="contained" onClick={handleSubmit(onSubmit)} sx={{width: "30%"}}/>
             </Stack>
         </Box>
     </Modal>
@@ -89,12 +89,12 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
             <Typography variant="h3">
                 Task Edit
             </Typography>
-            <FormInput register={register} fieldName="Task Name" value={task.name} required sx={{width: "100%"}} />
+            <FormInput register={register} title="Task Name" fieldName="name" value={task.name} required sx={{width: "100%"}} />
             <Stack direction="row" justifyContent="space-between">
-                <SelectInput register={register} fieldName="Task priority" value={task.priority} required />
-                <DateInput register={register} fieldName="Due date" value={task.dueDate.format()} required sx={{width: "100%"}}/>
+                <SelectInput register={register} title="Task priority" fieldName="priority" value={task.priority} required />
+                <DateInput register={register} title="Due Date" fieldName="dueDate" value={task.dueDate.format()} required sx={{width: "100%"}}/>
             </Stack>
-            <FormInput register={register} fieldName="Description" value={task.description} required sx={{width: "100%"}}/>
+            <FormInput register={register} title="Description" fieldName="description" value={task.description} required sx={{width: "100%"}}/>
             <Stack justifyContent="center" alignItems="center">
                 <SubmitButton name="Register" variant="contained" onClick={() => handleSubmit(onSubmit)} sx={{width: "30%"}}/>
             </Stack>
