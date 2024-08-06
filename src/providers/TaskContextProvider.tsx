@@ -44,9 +44,12 @@ export const TaskContextProvider: React.FC<{ children: ReactNode }> = ({children
     const [state, dispatch] = useReducer(taskReducer, initialState)
 
     useEffect(() => {
-        const tasks = fetchTasks()
-        dispatch({type: "SET_TASKS", payload: tasks})
-    }, [])
+        ( async () => {
+            await fetchTasks().then((tasks) => {
+                    dispatch({type: "SET_TASKS", payload: tasks})
+                }
+            )}
+    )()}, [])
 
     return(
         <TaskContext.Provider value={{state, dispatch}}>

@@ -12,7 +12,7 @@ export const CenterLayout: React.FC<CenterLayoutProps> = ({ children, maxWidth }
                 direction="column"
                 alignItems="center"
                 flexWrap="nowrap"
-                gap={8}
+                gap={2}
                 sx={{ height: "100%", position: "relative" }}
             >
                 {children}

@@ -1,4 +1,4 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Button, Stack, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import React, { useContext, useState } from 'react';
 import { TaskContext } from '../providers/TaskContextProvider';
 import { TaskEditModal } from '../components/common/Modals';
@@ -24,15 +24,17 @@ const TasklistPage: React.FC = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {state.tasks.map((task) => (
+                    {state?.tasks.map((task) => (
                         <TableRow key={task.id}>
                             <TableCell>{task.name}</TableCell>
                             <TableCell>{task.priority}</TableCell>
-                            <TableCell>{task.dueDate.format("YYYY-MM-DD")}</TableCell>
+                            <TableCell>{task.dueDate.format("YYYY/MM/DD (ddd)")}</TableCell>
                             <TableCell>{task.description}</TableCell>
                             <TableCell>
-                                <Button variant="contained" onClick={() => setTaskEditModalOpen(true)}>Edit</Button>
-                                <Button variant="contained" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+                                <Stack direction="row" spacing={2}>
+                                    <Button variant="contained" onClick={() => setTaskEditModalOpen(true)}>Edit</Button>
+                                    <Button variant="contained" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+                                </Stack>
                             </TableCell>
                             <TaskEditModal open={taskEditModalOpen} setOpen={setTaskEditModalOpen} task={task} />
                         </TableRow>

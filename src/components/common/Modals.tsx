@@ -9,7 +9,6 @@ import { SubmitButton } from './Buttons';
 import { TaskContext } from '../../providers/TaskContextProvider';
 import { useContext } from 'react';
 import { Task } from '../../types/task';
-import { Dayjs } from 'dayjs';
 
 const style = {
   position: 'absolute',
@@ -93,7 +92,7 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
             <FormInput register={register} fieldName="Task Name" value={task.name} required sx={{width: "100%"}} />
             <Stack direction="row" justifyContent="space-between">
                 <SelectInput register={register} fieldName="Task priority" value={task.priority} required />
-                <DateInput register={register} fieldName="Due date" value={new Dayjs(task.dueDate).format()} required sx={{width: "100%"}}/>
+                <DateInput register={register} fieldName="Due date" value={task.dueDate.format()} required sx={{width: "100%"}}/>
             </Stack>
             <FormInput register={register} fieldName="Description" value={task.description} required sx={{width: "100%"}}/>
             <Stack justifyContent="center" alignItems="center">
