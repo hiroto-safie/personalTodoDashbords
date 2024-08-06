@@ -5,15 +5,16 @@ import { UseFormRegister, FieldValues } from 'react-hook-form';
 interface FormInputProps {
     register: UseFormRegister<FieldValues>
     fieldName: string
+    value?: string
     required?: boolean
     sx?: SxProps
 }
 
-export const FormInput: React.FC<FormInputProps> = ({ register, fieldName, required, sx }) => {
+export const FormInput: React.FC<FormInputProps> = ({ register, fieldName, value, required, sx }) => {
     return (
         <Stack direction="column">
             <Typography variant="h6">{fieldName}</Typography>
-            <TextField {...register(fieldName)} variant="outlined" required={required} sx={sx}/>
+            <TextField {...register(fieldName)} variant="outlined" value={value} required={required} sx={sx}/>
         </Stack>
     );
 };
