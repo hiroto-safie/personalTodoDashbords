@@ -29,7 +29,7 @@ export const Sidebar: React.FC = () => {
     const [isTaskAddModalOpen, setIsTaskAddModalOpen] = React.useState(false);
     return (
         <Stack direction="row">
-            <Stack sx={{width: "15vw", height: `calc(100vh - ${HEADER_HEIGHT}vh)`, backgroundColor: "blue", marginRight: 3}}>
+            <Stack sx={{width: "15vw", height: `calc(95vh - ${HEADER_HEIGHT}vh)`, backgroundColor: "blue", marginRight: 3}}>
                 <PageRouteComponent pageTitle="Dashboard" pageLink="/" />
                 <PageRouteComponent pageTitle="Task Add" onClick={() => setIsTaskAddModalOpen(true)} />
                 <PageRouteComponent pageTitle="Task List" pageLink="/taskList" />
