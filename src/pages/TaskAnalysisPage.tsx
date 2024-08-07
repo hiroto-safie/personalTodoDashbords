@@ -1,25 +1,31 @@
-import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
-import React from 'react';
+import { useContext, useMemo } from 'react';
+import { TaskContext } from '../providers/TaskContextProvider';
+import { Typography } from '@mui/material';
 
-const TaskAnalysisPage: React.FC = () => {
-    return (
-        <>
-            <Typography variant="h2">Task Analysis</Typography>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Task Name</TableCell>
-                        <TableCell>Priority</TableCell>
-                        <TableCell>Due date</TableCell>
-                        <TableCell>Description</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    
-                </TableBody>
-            </Table>
-        </>
-    )
-};
+export default function TaskStatistics() {
+  const { state } = useContext(TaskContext);
 
-export default TaskAnalysisPage;
+  const statistics = useMemo(() => {
+    const totalTasks = state.tasks.length;
+    const completedTasks = state.tasks.filter(task => task.status === 'completed').length;
+    const pendingTasks = totalTasks - completedTasks;
+    const completionRate = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+
+    return {
+      totalTasks,
+      completedTasks,
+      pendingTasks,
+      completionRate: completionRate.toFixed(2) + '%'
+    };
+  }, [state.tasks]);
+
+  return (
+    <>
+        <Typography variant="h2">Task Statistics</Typography>
+        <p>Total Tasks: {statistics.totalTasks}</p>
+        <p>Completed Tasks: {statistics.completedTasks}</p>
+        <p>Pending Tasks: {statistics.pendingTasks}</p>
+        <p>Completion Rate: {statistics.completionRate}</p>
+    </>
+  );
+}
