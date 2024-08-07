@@ -6,4 +6,5 @@ export type Task = {
     priority: string;
     dueDate: Dayjs;
     description: string;
+    status: string
 };
