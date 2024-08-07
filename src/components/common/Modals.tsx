@@ -7,7 +7,7 @@ import { FieldValue, useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { SubmitButton } from './Buttons';
 import { TaskContext } from '../../providers/TaskContextProvider';
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { Task } from '../../types/task';
 
 const style = {
