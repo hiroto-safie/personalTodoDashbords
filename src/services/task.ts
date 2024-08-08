@@ -3,7 +3,7 @@ import { Task } from "../types/task"
 
 const sampleTasks: Task[] = [
     {
-        "id": 1,
+        "id": 0,
         "name": "Complete project proposal",
         "description": "Write a detailed project proposal for the upcoming deadline",
         "dueDate": dayjs("2024-10-15"),
@@ -11,7 +11,7 @@ const sampleTasks: Task[] = [
         "status": "completed"
     },
     {
-        "id": 2,
+        "id": 1,
         "name": "Review code changes",
         "description": "Review and provide feedback on the latest code changes",
         "dueDate": dayjs("2024-10-20"),
@@ -19,7 +19,7 @@ const sampleTasks: Task[] = [
         "status": "ongoing"
     },
     {
-        "id": 3,
+        "id": 2,
         "name": "Prepare presentation slides",
         "description": "Create visually appealing slides for the upcoming presentation",
         "dueDate": dayjs("2024-10-25"),
@@ -27,7 +27,7 @@ const sampleTasks: Task[] = [
         "status": "untouched"
     },
     {
-        "id": 4,
+        "id": 3,
         "name": "Fix bug in login functionality",
         "description": "Investigate and fix the bug causing login issues",
         "dueDate": dayjs("2024-10-18"),
@@ -35,7 +35,7 @@ const sampleTasks: Task[] = [
         "status": "completed"
     },
     {
-        "id": 5,
+        "id": 4,
         "name": "Update documentation",
         "description": "Update the project documentation with the latest changes",
         "dueDate": dayjs("2024-10-30"),
@@ -43,7 +43,7 @@ const sampleTasks: Task[] = [
         "status": "ongoing"
     },
     {
-        "id": 6,
+        "id": 5,
         "name": "Test new feature",
         "description": "Perform thorough testing of the newly implemented feature",
         "dueDate": dayjs("2024-08-09"),
@@ -51,7 +51,7 @@ const sampleTasks: Task[] = [
         "status": "untouched"
     },
     {
-        "id": 7,
+        "id": 6,
         "name": "Optimize database queries",
         "description": "Analyze and optimize the performance of database queries",
         "dueDate": dayjs("2024-08-10"),
@@ -59,7 +59,7 @@ const sampleTasks: Task[] = [
         "status": "completed"
     },
     {
-        "id": 8,
+        "id": 7,
         "name": "Create user onboarding tutorial",
         "description": "Design and create a user onboarding tutorial for new users",
         "dueDate": dayjs("2024-08-11"),
