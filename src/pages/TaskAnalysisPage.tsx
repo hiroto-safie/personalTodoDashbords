@@ -7,13 +7,13 @@ export default function TaskStatistics() {
 
   const statistics = useMemo(() => {
     const totalTasks = state.tasks.length;
-    const completedTasks = state.tasks.filter(task => task.status === 'completed').length;
-    const pendingTasks = totalTasks - completedTasks;
-    const completionRate = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+    const CompletedTasks = state.tasks.filter(task => task.status === 'Completed').length;
+    const pendingTasks = totalTasks - CompletedTasks;
+    const completionRate = totalTasks > 0 ? (CompletedTasks / totalTasks) * 100 : 0;
 
     return {
       totalTasks,
-      completedTasks,
+      CompletedTasks,
       pendingTasks,
       completionRate: completionRate.toFixed(2) + '%'
     };
@@ -23,7 +23,7 @@ export default function TaskStatistics() {
     <>
         <Typography variant="h2">Task Statistics</Typography>
         <p>Total Tasks: {statistics.totalTasks}</p>
-        <p>Completed Tasks: {statistics.completedTasks}</p>
+        <p>Completed Tasks: {statistics.CompletedTasks}</p>
         <p>Pending Tasks: {statistics.pendingTasks}</p>
         <p>Completion Rate: {statistics.completionRate}</p>
     </>

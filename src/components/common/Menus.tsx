@@ -35,9 +35,9 @@ export const StatusMenu: React.FC<FormMenuProps> = ({ register, title, fieldName
         <Stack direction="column">
             <Typography variant="h6">{title}</Typography>
             <Select {...register(fieldName)} variant="outlined" value={value} required={required} sx={sx}>
-                <MenuItem value="untouched">untouched</MenuItem>
-                <MenuItem value="ongoing">ongoing</MenuItem>
-                <MenuItem value="completed">completed</MenuItem>
+                <MenuItem value="Untouched">Untouched</MenuItem>
+                <MenuItem value="Ongoing">Ongoing</MenuItem>
+                <MenuItem value="Completed">Completed</MenuItem>
             </Select>
         </Stack>
     ), [sx]);

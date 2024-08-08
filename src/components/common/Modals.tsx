@@ -44,7 +44,7 @@ export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
       priority: inputValue.priority,
       dueDate: dayjs(inputValue.dueDate),
       description: inputValue.description,
-      status: "untouched"
+      status: "Untouched"
     }
     
     dispatch({type: "ADD_TASK", payload: addedTask})
