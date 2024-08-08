@@ -1,19 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { createRoutes, PAGES } from "./routes"
 import PageLayout from "./components/layout/Layout"
-import { TaskContextProvider } from "./providers/TaskContextProvider"
-
+import { ReduxProvider } from "./providers/ReduxProvider"
 
 function App() {
   return (
     <BrowserRouter>
-      <TaskContextProvider>
+      <ReduxProvider>
         <Routes>
             <Route element={<PageLayout/>}>
               {createRoutes(PAGES)}
             </Route>
         </Routes>
-      </TaskContextProvider>
+      </ReduxProvider>
     </BrowserRouter>
   )
 }
