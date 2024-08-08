@@ -8,7 +8,7 @@ import { Task } from '../types/task';
 const TasklistPage: React.FC = () => {
     const [taskEditModalOpen, setTaskEditModalOpen] = useState(false)
     const {state, dispatch} = useContext(TaskContext)
-    const [filterText, setFilterText] = useState("High")
+    const [filterText, setFilterText] = useState("All")
 
     // NOTE: useCallbackを使うことで、「dispatchの内容が変わらなければ、再レンダリングをしても
     // この関数のメモリアロケーションは変わらない」と考えた
@@ -38,7 +38,7 @@ const TasklistPage: React.FC = () => {
     return (
         <>
             <Typography variant="h2">Task List</Typography>
-            <Typography>Filtering</Typography>
+            <Typography>Priority Filtering</Typography>
             <Stack direction="row">
                 <Button onClick={() => setFilterText("All")}>All priority</Button>
                 <Button onClick={() => setFilterText("High")}>High priority</Button>
