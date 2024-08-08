@@ -1,0 +1,1 @@
+export type Status = "Untouched" | "Ongoing" | "Completed" | undefined

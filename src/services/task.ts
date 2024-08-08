@@ -8,7 +8,7 @@ const sampleTasks: Task[] = [
         "description": "Write a detailed project proposal for the upcoming deadline",
         "dueDate": dayjs("2024-10-15"),
         "priority": "High",
-        "status": "completed"
+        "status": "Completed"
     },
     {
         "id": 1,
@@ -16,7 +16,7 @@ const sampleTasks: Task[] = [
         "description": "Review and provide feedback on the latest code changes",
         "dueDate": dayjs("2024-10-20"),
         "priority": "Low",
-        "status": "ongoing"
+        "status": "Ongoing"
     },
     {
         "id": 2,
@@ -24,7 +24,7 @@ const sampleTasks: Task[] = [
         "description": "Create visually appealing slides for the upcoming presentation",
         "dueDate": dayjs("2024-10-25"),
         "priority": "Medium",
-        "status": "untouched"
+        "status": "Untouched"
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@ const sampleTasks: Task[] = [
         "description": "Investigate and fix the bug causing login issues",
         "dueDate": dayjs("2024-10-18"),
         "priority": "Medium",
-        "status": "completed"
+        "status": "Completed"
     },
     {
         "id": 4,
@@ -40,7 +40,7 @@ const sampleTasks: Task[] = [
         "description": "Update the project documentation with the latest changes",
         "dueDate": dayjs("2024-10-30"),
         "priority": "High",
-        "status": "ongoing"
+        "status": "Ongoing"
     },
     {
         "id": 5,
@@ -48,7 +48,7 @@ const sampleTasks: Task[] = [
         "description": "Perform thorough testing of the newly implemented feature",
         "dueDate": dayjs("2024-08-09"),
         "priority": "High",
-        "status": "untouched"
+        "status": "Untouched"
     },
     {
         "id": 6,
@@ -56,7 +56,7 @@ const sampleTasks: Task[] = [
         "description": "Analyze and optimize the performance of database queries",
         "dueDate": dayjs("2024-08-10"),
         "priority": "Low",
-        "status": "completed"
+        "status": "Completed"
     },
     {
         "id": 7,
@@ -64,7 +64,7 @@ const sampleTasks: Task[] = [
         "description": "Design and create a user onboarding tutorial for new users",
         "dueDate": dayjs("2024-08-11"),
         "priority": "High",
-        "status": "ongoing"
+        "status": "Ongoing"
     }
 ]
 
