@@ -23,7 +23,7 @@ const sampleTasks: Task[] = [
         "name": "Prepare presentation slides",
         "description": "Create visually appealing slides for the upcoming presentation",
         "dueDate": dayjs("2024-10-25"),
-        "priority": "Middle",
+        "priority": "Medium",
         "status": "untouched"
     },
     {
@@ -31,7 +31,7 @@ const sampleTasks: Task[] = [
         "name": "Fix bug in login functionality",
         "description": "Investigate and fix the bug causing login issues",
         "dueDate": dayjs("2024-10-18"),
-        "priority": "Middle",
+        "priority": "Medium",
         "status": "completed"
     },
     {

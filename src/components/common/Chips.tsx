@@ -8,8 +8,8 @@ export const HighPriorityChip: React.FC = () => {
     return useMemo(() => <Chip color="error" label="High" sx={{width: chipWidth}} />, [chipWidth])
 }
 
-export const MiddlePriorityChip: React.FC = () => {
-    return useMemo(() => <Chip color="warning" label="Middle" sx={{width: chipWidth}} />, [chipWidth])
+export const MediumPriorityChip: React.FC = () => {
+    return useMemo(() => <Chip color="warning" label="Medium" sx={{width: chipWidth}} />, [chipWidth])
 }
 
 export const LowPriorityChip: React.FC = () => {

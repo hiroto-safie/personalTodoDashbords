@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-import { MenuItem, Select, Stack, SxProps, TextField, Typography } from '@mui/material';
+import { Stack, SxProps, TextField, Typography } from '@mui/material';
 import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { Dayjs } from 'dayjs';
 
 interface FormInputProps {
     register: UseFormRegister<FieldValues>
@@ -21,7 +22,16 @@ export const FormInput: React.FC<FormInputProps> = ({ register, title, fieldName
     ), [sx]);
 };
 
-export const DateInput: React.FC<FormInputProps> = ({ register, title, fieldName, required, sx }) => {
+interface FormDateProps {
+    register: UseFormRegister<FieldValues>
+    title: string
+    fieldName: string
+    value?: Dayjs
+    required?: boolean
+    sx?: SxProps
+}
+
+export const DateInput: React.FC<FormDateProps> = ({ register, title, fieldName, required, sx }) => {
     // NOTE: sxに変更があれば、DateInputの見た目が変わる可能性がある。つまり、再計算(再レンダリング)が必要になる可能性がある
     return useMemo(() => (
         <Stack direction="column">

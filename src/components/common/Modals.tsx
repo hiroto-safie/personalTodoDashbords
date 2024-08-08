@@ -113,11 +113,11 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
             <Stack direction="row" justifyContent="space-between">
                 <PriorityMenu register={register} title="Task priority" fieldName="priority" value={task.priority} />
                 <StatusMenu register={register} title="Task status" fieldName="status" value={task.status} />
-                <DateInput register={register} title="Due Date" fieldName="dueDate" value={task.dueDate.format()} sx={{width: "100%"}}/>
+                <DateInput register={register} title="Due Date" fieldName="dueDate" value={task.dueDate} sx={{width: "100%"}}/>
             </Stack>
             <FormInput register={register} title="Description" fieldName="description" value={task.description} sx={{width: "100%"}}/>
             <Stack justifyContent="center" alignItems="center">
-                <SubmitButton name="Register" variant="contained" onClick={() => handleSubmit(onSubmit)} sx={{width: "30%"}}/>
+                <SubmitButton name="Register" variant="contained" onClick={handleSubmit(onSubmit)} sx={{width: "30%"}}/>
             </Stack>
         </Box>
     </Modal>

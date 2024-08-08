@@ -2,7 +2,7 @@ import { Button, Stack, Table, TableBody, TableCell, TableContainer, TableHead, 
 import React, { useCallback, useContext, useState } from 'react';
 import { TaskContext } from '../providers/TaskContextProvider';
 import { TaskEditModal } from '../components/common/Modals';
-import { HighPriorityChip, LowPriorityChip, MiddlePriorityChip } from '../components/common/Chips';
+import { HighPriorityChip, LowPriorityChip, MediumPriorityChip } from '../components/common/Chips';
 import { Task } from '../types/task';
 
 const TasklistPage: React.FC = () => {
@@ -20,8 +20,8 @@ const TasklistPage: React.FC = () => {
         switch(priority){
             case "High":
                 return <HighPriorityChip />
-            case "Middle":
-                return <MiddlePriorityChip />
+            case "Medium":
+                return <MediumPriorityChip />
             case "Low":
                 return <LowPriorityChip />
         }
@@ -42,7 +42,7 @@ const TasklistPage: React.FC = () => {
             <Stack direction="row">
                 <Button onClick={() => setFilterText("All")}>All priority</Button>
                 <Button onClick={() => setFilterText("High")}>High priority</Button>
-                <Button onClick={() => setFilterText("Middle")}>Middle priority</Button>
+                <Button onClick={() => setFilterText("Medium")}>Medium priority</Button>
                 <Button onClick={() => setFilterText("Low")}>Low priority</Button>
             </Stack>
             <TableContainer sx={{ maxHeight: "60vh" }}>
