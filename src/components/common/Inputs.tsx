@@ -21,20 +21,6 @@ export const FormInput: React.FC<FormInputProps> = ({ register, title, fieldName
     ), [sx]);
 };
 
-export const SelectInput: React.FC<FormInputProps> = ({ register, title, fieldName, required, sx }) => {
-    // NOTE: sxに変更があれば、SelectInputの見た目が変わる可能性がある。つまり、再計算(再レンダリング)が必要になる可能性がある
-    return useMemo(() => (
-        <Stack direction="column">
-            <Typography variant="h6">{title}</Typography>
-            <Select {...register(fieldName)} variant="outlined" value="High" required={required} sx={sx}>
-                <MenuItem value="High">High</MenuItem>
-                <MenuItem value="Medium">Medium</MenuItem>
-                <MenuItem value="Low">Low</MenuItem>
-            </Select>
-        </Stack>
-    ), [sx]);
-}
-
 export const DateInput: React.FC<FormInputProps> = ({ register, title, fieldName, required, sx }) => {
     // NOTE: sxに変更があれば、DateInputの見た目が変わる可能性がある。つまり、再計算(再レンダリング)が必要になる可能性がある
     return useMemo(() => (

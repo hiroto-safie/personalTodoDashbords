@@ -2,13 +2,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { DateInput, FormInput, SelectInput } from './Inputs';
-import { FieldValue, useForm } from 'react-hook-form';
+import { DateInput, FormInput } from './Inputs';
+import { FieldValues, useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { SubmitButton } from './Buttons';
 import { TaskContext } from '../../providers/TaskContextProvider';
 import { useContext } from 'react';
 import { Task } from '../../types/task';
+import dayjs from 'dayjs';
+import { PriorityMenu, StatusMenu } from './Menus';
 
 const style = {
   position: 'absolute',
@@ -30,13 +32,22 @@ interface TaskBaseModalProps{
 export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
   const handleClose = () => setOpen(false);
   const { register, handleSubmit } = useForm()
-  const {dispatch} = useContext(TaskContext)
+  const { state, dispatch } = useContext(TaskContext)
 
-  const onSubmit = (inputValue: FieldValue<Task>) => {
+  const onSubmit = (inputValue: FieldValues) => {
     console.log("Task Added")
     console.log(inputValue);
+
+    const addedTask: Task = {
+      id: state.nextId,
+      name: inputValue.name,
+      priority: inputValue.priority,
+      dueDate: dayjs(inputValue.dueDate),
+      description: inputValue.description,
+      status: "untouched"
+    }
     
-    dispatch({type: "ADD_TASK", payload: inputValue})
+    dispatch({type: "ADD_TASK", payload: addedTask})
     handleClose()
   }
 
@@ -51,7 +62,7 @@ export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
             </Typography>
             <FormInput register={register} title="Task Name" fieldName="name" required sx={{width: "100%"}}/>
             <Stack direction="row" justifyContent="space-between">
-                <SelectInput register={register} title="Task priority" fieldName="priority" required />
+                <PriorityMenu register={register} title="Task priority" fieldName="priority" required />
                 <DateInput register={register} title="Due Date" fieldName="dueDate" required sx={{width: "100%"}}/>
             </Stack>
             <FormInput register={register} title="Description" fieldName="description" required sx={{width: "100%"}}/>
@@ -72,11 +83,20 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
   const { register, handleSubmit } = useForm()
   const {dispatch} = useContext(TaskContext)
 
-  const onSubmit = (inputValue: FieldValue<Task>) => {
+  const onSubmit = (inputValue: FieldValues) => {
     console.log("Task Edited")
     console.log(inputValue);
+
+    const edittedTask: Task = {
+      id: task.id,
+      name: inputValue.name,
+      priority: inputValue.priority,
+      dueDate: dayjs(inputValue.dueDate),
+      description: inputValue.description,
+      status: inputValue.status
+    }
     
-    dispatch({type: "UPDATE_TASK", payload: inputValue})
+    dispatch({type: "UPDATE_TASK", payload: edittedTask})
     handleClose()
   }
 
@@ -89,12 +109,13 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
             <Typography variant="h3">
                 Task Edit
             </Typography>
-            <FormInput register={register} title="Task Name" fieldName="name" value={task.name} required sx={{width: "100%"}} />
+            <FormInput register={register} title="Task Name" fieldName="name" value={task.name} sx={{width: "100%"}} />
             <Stack direction="row" justifyContent="space-between">
-                <SelectInput register={register} title="Task priority" fieldName="priority" value={task.priority} required />
-                <DateInput register={register} title="Due Date" fieldName="dueDate" value={task.dueDate.format()} required sx={{width: "100%"}}/>
+                <PriorityMenu register={register} title="Task priority" fieldName="priority" value={task.priority} />
+                <StatusMenu register={register} title="Task status" fieldName="status" value={task.status} />
+                <DateInput register={register} title="Due Date" fieldName="dueDate" value={task.dueDate.format()} sx={{width: "100%"}}/>
             </Stack>
-            <FormInput register={register} title="Description" fieldName="description" value={task.description} required sx={{width: "100%"}}/>
+            <FormInput register={register} title="Description" fieldName="description" value={task.description} sx={{width: "100%"}}/>
             <Stack justifyContent="center" alignItems="center">
                 <SubmitButton name="Register" variant="contained" onClick={() => handleSubmit(onSubmit)} sx={{width: "30%"}}/>
             </Stack>
