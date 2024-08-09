@@ -6,11 +6,11 @@ import { DateInput, FormInput } from './Inputs';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { SubmitButton } from './Buttons';
-import { TaskContext } from '../../providers/TaskContextProvider';
-import { useContext } from 'react';
 import { Task } from '../../types/task';
 import dayjs from 'dayjs';
 import { PriorityMenu, StatusMenu } from './Menus';
+import { useDispatch } from 'react-redux';
+import { addTask, editTask } from '../../actions';
 
 const style = {
   position: 'absolute',
@@ -32,14 +32,14 @@ interface TaskBaseModalProps{
 export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
   const handleClose = () => setOpen(false);
   const { register, handleSubmit } = useForm()
-  const { state, dispatch } = useContext(TaskContext)
+  const dispatch = useDispatch();
 
   const onSubmit = (inputValue: FieldValues) => {
     console.log("Task Added")
     console.log(inputValue);
 
     const addedTask: Task = {
-      id: state.nextId,
+      id: Math.floor(Math.random() * 1000000),
       name: inputValue.name,
       priority: inputValue.priority,
       dueDate: dayjs(inputValue.dueDate),
@@ -47,7 +47,7 @@ export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
       status: "Untouched"
     }
     
-    dispatch({type: "ADD_TASK", payload: addedTask})
+    dispatch(addTask(addedTask))
     handleClose()
   }
 
@@ -62,7 +62,7 @@ export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
             </Typography>
             <FormInput register={register} title="Task Name" fieldName="name" required sx={{width: "100%"}}/>
             <Stack direction="row" justifyContent="space-between">
-                <PriorityMenu register={register} title="Task priority" fieldName="priority" required />
+                <PriorityMenu register={register} title="Task priority" value="High" fieldName="priority" required />
                 <DateInput register={register} title="Due Date" fieldName="dueDate" required sx={{width: "100%"}}/>
             </Stack>
             <FormInput register={register} title="Description" fieldName="description" required sx={{width: "100%"}}/>
@@ -81,7 +81,7 @@ interface TaskEditModalProps extends TaskBaseModalProps{
 export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}) => {
   const handleClose = () => setOpen(false);
   const { register, handleSubmit } = useForm()
-  const {dispatch} = useContext(TaskContext)
+  const dispatch = useDispatch();
 
   const onSubmit = (inputValue: FieldValues) => {
     console.log("Task Edited")
@@ -96,7 +96,7 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
       status: inputValue.status
     }
     
-    dispatch({type: "UPDATE_TASK", payload: edittedTask})
+    dispatch(editTask(edittedTask))
     handleClose()
   }
 

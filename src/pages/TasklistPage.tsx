@@ -1,22 +1,26 @@
 import { Button, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import React, { useCallback, useContext, useState } from 'react';
-import { TaskContext } from '../providers/TaskContextProvider';
+import React, { useCallback, useState } from 'react';
 import { TaskEditModal } from '../components/common/Modals';
 import { HighPriorityChip, LowPriorityChip, MediumPriorityChip } from '../components/common/Chips';
 import { Task } from '../types/task';
+import { useDispatch, useSelector } from 'react-redux';
+import { State } from '../types/state';
+import { Priority } from '../types/priority';
+import { deleteTask } from '../actions';
 
 const TasklistPage: React.FC = () => {
     const [taskEditModalOpen, setTaskEditModalOpen] = useState(false)
-    const {state, dispatch} = useContext(TaskContext)
+    const dispatch = useDispatch();
+    const allTasks: Task[] = useSelector((state: State) => state.tasks);
     const [filterText, setFilterText] = useState("All")
 
     // NOTE: useCallbackを使うことで、「dispatchの内容が変わらなければ、再レンダリングをしても
     // この関数のメモリアロケーションは変わらない」と考えた
     const handleDeleteTask = useCallback((id: number) => {
-        dispatch({type: "DELETE_TASK", payload: id})
+        dispatch(deleteTask(id))
     }, [dispatch])
 
-    const PriorityChip: React.FC<{priority: string}> = React.memo(({priority}) => {
+    const PriorityChip: React.FC<{priority: Priority}> = React.memo(({priority}) => {
         switch(priority){
             case "High":
                 return <HighPriorityChip />
@@ -33,7 +37,7 @@ const TasklistPage: React.FC = () => {
         return tasks.filter((task) => task.priority === filterText)
     }, [filterText])
 
-    const tasks = filterTasks(state.tasks)
+    const tasks = filterTasks(allTasks)
     
     return (
         <>
