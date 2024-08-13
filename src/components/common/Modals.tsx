@@ -35,14 +35,11 @@ export const TaskAddModal:React.FC<TaskBaseModalProps> = ({open, setOpen}) => {
   const dispatch = useDispatch();
 
   const onSubmit = (inputValue: FieldValues) => {
-    console.log("Task Added")
-    console.log(inputValue);
-
     const addedTask: Task = {
       id: Math.floor(Math.random() * 1000000),
       name: inputValue.name,
       priority: inputValue.priority,
-      dueDate: dayjs(inputValue.dueDate),
+      dueDate: inputValue.dueDate,
       description: inputValue.description,
       status: "Untouched"
     }
@@ -84,14 +81,11 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
   const dispatch = useDispatch();
 
   const onSubmit = (inputValue: FieldValues) => {
-    console.log("Task Edited")
-    console.log(inputValue);
-
     const edittedTask: Task = {
       id: task.id,
       name: inputValue.name,
       priority: inputValue.priority,
-      dueDate: dayjs(inputValue.dueDate),
+      dueDate: inputValue.dueDate,
       description: inputValue.description,
       status: inputValue.status
     }
