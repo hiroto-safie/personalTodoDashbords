@@ -1,6 +1,6 @@
 import { Button, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import { TaskEditModal } from '../../../components/common/Modals';
+import { TaskEditModal } from '../../TaskEditModal/view';
 import { Task } from '../../../types/task';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from '../../../types/state';
