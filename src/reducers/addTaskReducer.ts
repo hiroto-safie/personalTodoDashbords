@@ -1,19 +1,23 @@
 import { ADD_TASK } from "../actions";
 import { Action } from "../types/action";
-import { Task } from "../types/task";
+import { State } from "../types/state";
 
-const initialState: Task[] = []
+const initialState: State = {
+    tasks: [],
+    nextId: 1
+}
 
-export const addTaskReducer = (state = initialState, action: Action) => {
+export const addTaskReducer = (state = initialState, action: Action): State => {
     switch (action.type) {
         case ADD_TASK:
-            return [
+            console.log("ADD_TASK");
+            console.log(action);
+            
+            return {
                 ...state,
-                {
-                    id: action.payload.id,
-                    task: action.payload
-                }
-            ]
+                tasks: [...state.tasks, {...action.payload, id: state.nextId}],
+                nextId: state.nextId + 1
+            }
         default:
             return state
     }

@@ -1,13 +1,19 @@
 import { DELETE_TASK } from "../actions"
 import { Action } from "../types/action"
-import { Task } from "../types/task"
+import { State } from "../types/state"
 
-const initialState: Task[] = []
+const initialState: State = {
+    tasks: [],
+    nextId: 1
+}
 
 export const deleteTaskReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case DELETE_TASK:
-            return state.filter((task: Task) => task.id !== action.payload.id)
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
+            }
         default:
             return state
     }
