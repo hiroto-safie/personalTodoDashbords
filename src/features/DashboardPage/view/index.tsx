@@ -1,26 +1,16 @@
-import { Paper, Stack, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import React, { useContext } from 'react';
-import { TaskContext } from '../providers/TaskContextProvider';
+import { TaskContext } from '../../../providers/TaskContextProvider';
 import dayjs from 'dayjs';
-import { Task } from '../types/task';
-import { TaskCard } from '../components/common/Cards';
-
-// NOTE: upComingTaskCardsの内容が変わらなければ、Dashboardコンポーネントは再レンダリングする必要がない
-export const Dashboard: React.FC<{ upComingTaskCards: JSX.Element[] }> = React.memo(({ upComingTaskCards }) => {
-    return (
-        <Paper sx={{ minWidth: "50vw" }}>
-            <Stack direction="column">
-                {upComingTaskCards}
-            </Stack>
-        </Paper>
-    );
-})
+import { Task } from '../../../types/task';
+import { TaskCard } from '../../../components/common/Cards';
+import { Dashboard } from '../components/Dashboard';
 
 const DashboardPage: React.FC = () => {
     const {state} = useContext(TaskContext)
     const filterUpcomingTasks = (tasks: Task[], days: number) => {
         const today = dayjs(); 
-        return tasks.filter((task) => task.dueDate.diff(today, "day") <= days);
+        return tasks.filter((task) => dayjs(task.dueDate).diff(today, "day") <= days);
     }
     // NOTE: 期限日が本日から3日以内のタスクを取得
     const upcomingTaskCards = filterUpcomingTasks(state.tasks, 3).map((task) => {

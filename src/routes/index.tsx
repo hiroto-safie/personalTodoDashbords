@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Route } from 'react-router-dom';
-import Dashboard from '../pages/DashboardPage';
-import TaskList from '../pages/TasklistPage';
-import TaskAnalysis from '../pages/TaskAnalysisPage';
+import Dashboard from '../features/DashboardPage/view';
+import TaskList from '../features/TaskListPage/view';
+import TaskAnalysis from '../features/TaskStatisticsPage/TaskAnalysisPage';
 
 const PAGES = [
     {

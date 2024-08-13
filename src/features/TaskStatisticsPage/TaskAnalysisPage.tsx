@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react';
-import { TaskContext } from '../providers/TaskContextProvider';
+import { TaskContext } from '../../providers/TaskContextProvider';
 import { Typography } from '@mui/material';
 
 export default function TaskStatistics() {

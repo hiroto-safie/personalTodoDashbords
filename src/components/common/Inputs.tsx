@@ -19,7 +19,7 @@ export const FormInput: React.FC<FormInputProps> = ({ register, title, fieldName
             <Typography variant="h6">{title}</Typography>
             <TextField {...register(fieldName)} variant="outlined" value={value} required={required} sx={sx}/>
         </Stack>
-    ), [sx]);
+    ), [sx, value]);
 };
 
 interface FormDateProps {
