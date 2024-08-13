@@ -1,13 +1,15 @@
-import { useContext, useMemo } from 'react';
-import { TaskContext } from '../../providers/TaskContextProvider';
+import { useMemo } from 'react';
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { State } from '../../../types/state';
+import { Task } from '../../../types/task';
 
 export default function TaskStatistics() {
-  const { state } = useContext(TaskContext);
+  const tasks: Task[] = useSelector((state: State) => state.tasks);
 
   const statistics = useMemo(() => {
-    const totalTasks = state.tasks.length;
-    const CompletedTasks = state.tasks.filter(task => task.status === 'Completed').length;
+    const totalTasks = tasks.length;
+    const CompletedTasks = tasks.filter(task => task.status === 'Completed').length;
     const pendingTasks = totalTasks - CompletedTasks;
     const completionRate = totalTasks > 0 ? (CompletedTasks / totalTasks) * 100 : 0;
 
@@ -17,7 +19,7 @@ export default function TaskStatistics() {
       pendingTasks,
       completionRate: completionRate.toFixed(2) + '%'
     };
-  }, [state.tasks]);
+  }, [tasks]);
 
   return (
     <>
