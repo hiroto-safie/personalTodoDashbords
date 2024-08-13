@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useEffect, useReducer } from "react"
-import { State } from "../types/state";
+import { RootState } from "../reducers";
 import { Action } from "../types/action";
 import { fetchTasks } from "../services/task";
 
@@ -8,9 +8,9 @@ const initialState = {
     nextId: 1
 };
 
-export const TaskContext = createContext<{ state: State, dispatch: React.Dispatch<Action> }>({state: initialState, dispatch: () => null})
+export const TaskContext = createContext<{ state: RootState, dispatch: React.Dispatch<Action> }>({state: initialState, dispatch: () => null})
 
-function taskReducer(state: State, action: Action) {
+function taskReducer(state: RootState, action: Action) {
     switch (action.type) {
         case "SET_TASKS":
             return {

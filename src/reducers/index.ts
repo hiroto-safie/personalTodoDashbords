@@ -1,16 +1,17 @@
 import { Action } from "../types/action";
 import { ADD_TASK, EDIT_TASK, DELETE_TASK } from "../actions";
-import { State } from "../types/state";
 import { sampleTasks } from "../services/task";
+import store from "../stores";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-const initialState: State = {
+const initialState = {
     tasks: [
         ...sampleTasks,
     ],
     nextId: 1
 }
 
-export const rootReducer = (state = initialState, action: Action): State => {
+export const rootReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case ADD_TASK:
             return {
@@ -30,4 +31,14 @@ export const rootReducer = (state = initialState, action: Action): State => {
             }
         default:
             return state
-}}
+    }
+}
+
+type RootState = ReturnType<typeof store.getState>
+type AppDispatch = typeof store.dispatch
+
+const useAppDispatch: () => AppDispatch = useDispatch
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+
+export { useAppDispatch, useAppSelector }
+export type { RootState }

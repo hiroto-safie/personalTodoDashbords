@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { State } from '../../../types/state';
+import { RootState } from '../../../reducers';
 import { Task } from '../../../types/task';
 
 export default function TaskStatistics() {
-  const tasks: Task[] = useSelector((state: State) => state.tasks);
+  const tasks: Task[] = useSelector((state: RootState) => state.tasks);
 
   const statistics = useMemo(() => {
     const totalTasks = tasks.length;

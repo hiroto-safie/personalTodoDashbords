@@ -2,16 +2,16 @@ import { Button, Stack, Table, TableBody, TableCell, TableContainer, TableHead, 
 import React, { useCallback, useState } from 'react';
 import { TaskEditModal } from '../../TaskEditModal/view';
 import { Task } from '../../../types/task';
-import { useDispatch, useSelector } from 'react-redux';
-import { State } from '../../../types/state';
+import { RootState } from '../../../reducers';
 import { PriorityChip } from '../components/Chips/PriorityChip';
 import { deleteTask } from '../../../actions';
+import { useAppDispatch, useAppSelector } from '../../../reducers';
 
 const TasklistPage: React.FC = () => {
     const [taskEditModalOpen, setTaskEditModalOpen] = useState(false)
-    const allTasks: Task[] = useSelector((state: State) => state.tasks);
+    const allTasks: Task[] = useAppSelector((state: RootState) => state.tasks);
     const [filterText, setFilterText] = useState("All")
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
 
     // NOTE: レンダリングによるメモリアロケーションが発生しないようにuseCallbackを使用
     const handleDeleteTask = useCallback((id: number) => {

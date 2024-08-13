@@ -1,6 +1,5 @@
 import { Box, Typography, Stack } from "@mui/material";
 import { useForm, FieldValues } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { editTask } from "../../../actions";
 import { SubmitButton } from "../../../components/common/Buttons";
 import { FormInput, DateInput } from "../../../components/common/Inputs";
@@ -8,6 +7,7 @@ import { PriorityMenu, StatusMenu } from "../../../components/common/Menus";
 import { TaskAddModalProps } from "../../TaskAddModal/view";
 import { Task } from "../../../types/task";
 import { Modal } from "../../../components/common/Modals";
+import { useAppDispatch } from "../../../reducers";
 
 interface TaskEditModalProps extends TaskAddModalProps{
     task: Task
@@ -16,7 +16,7 @@ interface TaskEditModalProps extends TaskAddModalProps{
 export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}) => {
   const handleClose = () => setOpen(false);
   const { register, handleSubmit } = useForm()
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch()
 
   const onSubmit = (inputValue: FieldValues) => {
     const edittedTask: Task = {

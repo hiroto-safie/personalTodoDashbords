@@ -1,5 +1,5 @@
 import { Box, Link, Stack, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { HEADER_HEIGHT } from './Header';
 import { TaskAddModal } from "../../features/TaskAddModal/view";
 
@@ -26,7 +26,7 @@ const PageRouteComponent: React.FC<PageRouteComponentProps> = ({ pageTitle, page
 }
 
 export const Sidebar: React.FC = () => {
-    const [isTaskAddModalOpen, setIsTaskAddModalOpen] = React.useState(false);
+    const [isTaskAddModalOpen, setIsTaskAddModalOpen] = useState(false);
     return (
         <Stack direction="row">
             <Stack sx={{width: "15vw", height: `calc(95vh - ${HEADER_HEIGHT}vh)`, backgroundColor: "blue", marginRight: 3}}>
