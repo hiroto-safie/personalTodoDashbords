@@ -1,4 +1,3 @@
-import { Dayjs } from "dayjs"
 import { Priority } from "./priority";
 import { Status } from "./status";
 
@@ -6,7 +5,7 @@ export type Task = {
     id: number;
     name: string;
     priority: Priority;
-    dueDate: Dayjs;
+    dueDate: string;
     description: string;
     status: Status
 };

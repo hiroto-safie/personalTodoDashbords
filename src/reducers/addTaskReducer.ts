@@ -3,7 +3,16 @@ import { Action } from "../types/action";
 import { State } from "../types/state";
 
 const initialState: State = {
-    tasks: [],
+    tasks: [
+        {
+            "id": 0,
+            "name": "Complete project proposal",
+            "description": "Write a detailed project proposal for the upcoming deadline",
+            "dueDate": "2024-10-15",
+            "priority": "High",
+            "status": "Completed"
+        }
+    ],
     nextId: 1
 }
 

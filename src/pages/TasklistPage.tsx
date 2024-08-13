@@ -12,6 +12,8 @@ const TasklistPage: React.FC = () => {
     const [taskEditModalOpen, setTaskEditModalOpen] = useState(false)
     const dispatch = useDispatch();
     const allTasks: Task[] = useSelector((state: State) => state.tasks);
+    console.log(allTasks);
+    
     const [filterText, setFilterText] = useState("All")
 
     // NOTE: useCallbackを使うことで、「dispatchの内容が変わらなければ、再レンダリングをしても
@@ -66,7 +68,7 @@ const TasklistPage: React.FC = () => {
                                 <TableCell>{task.name}</TableCell>
                                 <TableCell>{task.status}</TableCell>
                                 <TableCell><PriorityChip priority={task.priority} /></TableCell>
-                                <TableCell>{task.dueDate.format("YYYY/MM/DD (ddd)")}</TableCell>
+                                <TableCell>{task.dueDate}</TableCell>
                                 <TableCell>{task.description}</TableCell>
                                 <TableCell>
                                     <Stack direction="row" spacing={2}>
