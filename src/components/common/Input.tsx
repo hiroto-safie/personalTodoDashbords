@@ -5,7 +5,7 @@ import { UseFormRegister, FieldValues } from 'react-hook-form';
 export interface BaseInputProps {
     register: UseFormRegister<FieldValues>
     fieldName: string
-    value: string
+    value?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     required?: boolean
     type?: React.HTMLInputTypeAttribute
