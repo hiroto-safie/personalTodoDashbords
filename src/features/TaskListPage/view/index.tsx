@@ -21,7 +21,7 @@ const TasklistPage: React.FC = () => {
     const filterTasks = useCallback((tasks: Task[]) => {
         if(filterText === "All") return tasks
         return tasks.filter((task) => task.priority === filterText)
-    }, [])
+    }, [filterText])
 
     const tasks = filterTasks(allTasks)
     
