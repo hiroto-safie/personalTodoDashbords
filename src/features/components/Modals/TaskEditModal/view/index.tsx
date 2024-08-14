@@ -1,7 +1,7 @@
 import { Box, Typography, Stack } from "@mui/material";
 import { useForm, FieldValues } from "react-hook-form";
 import { editTask } from "../../../../../actions";
-import { SubmitButton } from "../../../../../components/common/Button";
+import { SubmitButton } from "../../../Buttons";
 import { FormInput, DateInput } from "../../../Inputs";
 import { PriorityMenu, StatusMenu } from "../../../Menus";
 import { TaskAddModalProps } from "../../TaskAddModal/view";
@@ -49,7 +49,7 @@ export const TaskEditModal:React.FC<TaskEditModalProps> = ({open, setOpen, task}
             </Stack>
             <FormInput register={register} title="Description" fieldName="description" value={task.description} sx={{width: "100%"}}/>
             <Stack justifyContent="center" alignItems="center">
-                <SubmitButton name="Register" variant="contained" onClick={handleSubmit(onSubmit)} sx={{width: "30%"}}/>
+                <SubmitButton variant="contained" onClick={handleSubmit(onSubmit)} sx={{width: "30%"}}/>
             </Stack>
         </Box>
     </Modal>

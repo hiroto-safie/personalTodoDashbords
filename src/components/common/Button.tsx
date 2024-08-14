@@ -1,23 +1,19 @@
 import React, { useMemo } from 'react';
-import { Button, SxProps } from '@mui/material';
+import { Button as MuiButton, SxProps } from '@mui/material';
 
-interface ButtonProps {
+export interface BaseButtonProps {
     name: string;
     variant?: "text" | "outlined" | "contained";
     onClick?: () => void;
     sx?: SxProps
 }
 
-const buttonBaseStyle: SxProps = {
-    margin: 2
-}
-
-export const SubmitButton: React.FC<ButtonProps> = ({ name, variant, onClick, sx }) => {
+export const Button: React.FC<BaseButtonProps> = ({ name, variant, onClick, sx }) => {
     // NOTE: sxかvariantに変更があれば、SubmitButtonの見た目が変わる可能性がある。
     // つまり、再計算(再レンダリング)が必要になる可能性がある
     return useMemo(() => (
-        <Button variant={variant} onClick={onClick} sx={{...buttonBaseStyle, ...sx}}>
+        <MuiButton variant={variant} onClick={onClick} sx={sx}>
             {name}
-        </Button>
+        </MuiButton>
     ), [sx, variant]);
 };
