@@ -8,7 +8,7 @@ const initialState = {
     tasks: [
         ...sampleTasks,
     ],
-    nextId: 1
+    id: 1
 }
 
 export const rootReducer = (state = initialState, action: Action) => {
@@ -16,8 +16,8 @@ export const rootReducer = (state = initialState, action: Action) => {
         case ADD_TASK:
             return {
                 ...state,
-                tasks: [...state.tasks, {...action.payload, id: state.nextId}],
-                nextId: state.nextId + 1
+                tasks: [...state.tasks, {...action.payload, id: state.id}],
+                id: state.id + 1
             }
         case EDIT_TASK:
             return {
