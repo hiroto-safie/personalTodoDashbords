@@ -6,7 +6,7 @@ interface ButtonProps {
     variant?: "text" | "outlined" | "contained";
     onClick?: () => void;
     sx?: SxProps
-};
+}
 
 const buttonBaseStyle: SxProps = {
     margin: 2
