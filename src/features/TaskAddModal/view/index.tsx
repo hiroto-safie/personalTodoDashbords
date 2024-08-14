@@ -2,7 +2,7 @@ import { Box, Typography, Stack } from "@mui/material";
 import { useForm, FieldValues } from "react-hook-form";
 import { addTask } from "../../../actions";
 import { SubmitButton } from "../../../components/common/Buttons";
-import { FormInput, DateInput } from "../../../components/common/Inputs";
+import { FormInput, DateInput } from "../../components/Inputs";
 import { PriorityMenu } from "../../components/Menus";
 import { Task } from "../../../types/task";
 import { Modal } from "../../../components/common/Modals";
