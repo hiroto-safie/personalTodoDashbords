@@ -1,13 +1,13 @@
 import { Box, Typography, Stack } from "@mui/material";
 import { useForm, FieldValues } from "react-hook-form";
-import { editTask } from "../../../actions";
-import { SubmitButton } from "../../../components/common/Buttons";
-import { FormInput, DateInput } from "../../components/Inputs";
-import { PriorityMenu, StatusMenu } from "../../components/Menus";
+import { editTask } from "../../../../../actions";
+import { SubmitButton } from "../../../../../components/common/Button";
+import { FormInput, DateInput } from "../../../Inputs";
+import { PriorityMenu, StatusMenu } from "../../../Menus";
 import { TaskAddModalProps } from "../../TaskAddModal/view";
-import { Task } from "../../../types/task";
-import { Modal } from "../../../components/common/Modals";
-import { useAppDispatch } from "../../../reducers";
+import { Task } from "../../../../../types/task";
+import { Modal } from "../../../../../components/common/Modal";
+import { useAppDispatch } from "../../../../../reducers";
 
 interface TaskEditModalProps extends TaskAddModalProps{
     task: Task

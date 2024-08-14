@@ -18,5 +18,5 @@ export const DateInput: React.FC<DateInputProps> = ({ register, title, fieldName
             <Typography variant="h6">{title}</Typography>
             <Input register={register} fieldName={fieldName} value={date} onChange={handleChange} required={required} type="date" sx={sx}/>
         </Stack>
-    ), [sx, title, value]);
+    ), [sx, title, date]);
 }

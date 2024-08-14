@@ -19,5 +19,5 @@ export const FormInput: React.FC<FormInputProps> = ({ register, title, fieldName
             <Typography variant="h6">{title}</Typography>
             <Input register={register} fieldName={fieldName} value={inputText} onChange={handleChange} required={required} sx={sx}/>
         </Stack>
-    ), [sx, title, value]);
+    ), [sx, title, inputText]);
 };

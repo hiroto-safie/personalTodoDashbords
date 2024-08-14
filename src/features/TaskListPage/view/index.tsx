@@ -1,6 +1,6 @@
 import { Button, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import React, { useCallback, useState } from 'react';
-import { TaskEditModal } from '../../TaskEditModal/view';
+import { TaskEditModal } from '../../components/Modals/TaskEditModal/view';
 import { Task } from '../../../types/task';
 import { RootState } from '../../../reducers';
 import { PriorityChip } from '../components/Chips/PriorityChip';
