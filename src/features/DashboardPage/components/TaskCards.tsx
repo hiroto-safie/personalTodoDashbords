@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material"
 import { useMemo } from "react"
 import { Task } from "../../../types/task"
-import { Card } from "../../../components/common/Cards"
+import { Card } from "../../../components/common/Card"
 
 export const TaskCard = ({ task }: { task: Task }) => {
     return useMemo(() => (

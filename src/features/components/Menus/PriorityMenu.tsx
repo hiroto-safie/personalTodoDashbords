@@ -1,6 +1,6 @@
 import { SelectChangeEvent, Stack, Typography } from "@mui/material"
 import { useState, useMemo } from "react"
-import { BaseMenuProps, Menu } from "../../../components/common/Menus"
+import { BaseMenuProps, Menu } from "../../../components/common/Menu"
 import { Priority } from "../../../types/priority"
 
 interface PriorityMenuProps extends Omit<BaseMenuProps<Priority>, "choices"> {

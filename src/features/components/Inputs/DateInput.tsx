@@ -1,13 +1,22 @@
 import { Stack, Typography } from "@mui/material"
-import { useMemo } from "react"
-import { BaseInputProps, Input } from "../../../components/common/Inputs"
+import { useMemo, useState } from "react"
+import { BaseInputProps, Input } from "../../../components/common/Input"
 
-export const DateInput: React.FC<BaseInputProps> = ({ register, title, fieldName, value, required, sx }) => {
+interface DateInputProps extends BaseInputProps {
+    title: string
+}
+
+export const DateInput: React.FC<DateInputProps> = ({ register, title, fieldName, value, required, sx }) => {
+    const [date, setDate] = useState<string>(value);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setDate(e.target.value);
+    }
+
     // NOTE: sxに変更があれば、DateInputの見た目が変わる可能性がある。つまり、再計算(再レンダリング)が必要になる可能性がある
     return useMemo(() => (
         <Stack direction="column">
             <Typography variant="h6">{title}</Typography>
-            <Input register={register} title={title} fieldName={fieldName} value={value} required={required} type="date" sx={sx}/>
+            <Input register={register} fieldName={fieldName} value={date} onChange={handleChange} required={required} type="date" sx={sx}/>
         </Stack>
     ), [sx, title, value]);
 }

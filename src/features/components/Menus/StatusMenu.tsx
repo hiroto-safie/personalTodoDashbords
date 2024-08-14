@@ -1,6 +1,6 @@
 import { SelectChangeEvent, Stack, Typography } from "@mui/material"
 import { useState, useMemo } from "react"
-import { BaseMenuProps, Menu } from "../../../components/common/Menus"
+import { BaseMenuProps, Menu } from "../../../components/common/Menu"
 import { Status } from "../../../types/status"
 
 interface StatusMenuProps extends Omit<BaseMenuProps<Status>, "choices"> {
