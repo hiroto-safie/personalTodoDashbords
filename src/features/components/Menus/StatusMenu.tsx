@@ -5,8 +5,8 @@ import { Status } from "../../../types/status"
 
 interface StatusMenuProps extends Omit<BaseMenuProps<Status>, "choices"> {
     title: string
-    value: Status
 }
+
 export const StatusMenu: React.FC<StatusMenuProps> = ({ register, title, fieldName, value, required, sx }) => {
     const [status, setStatus] = useState<Status>(value)
     const handleChange = (event: SelectChangeEvent<string>) => {
@@ -17,7 +17,7 @@ export const StatusMenu: React.FC<StatusMenuProps> = ({ register, title, fieldNa
     return useMemo(() => (
         <Stack direction="column">
             <Typography variant="h6">{title}</Typography>
-            <Menu register={register} fieldName={fieldName} onChange={handleChange} choices={choices} required={required} sx={sx} />
+            <Menu register={register} fieldName={fieldName} value={status} onChange={handleChange} choices={choices} required={required} sx={sx} />
         </Stack>
     ), [sx, status]);
 }
